@@ -107,5 +107,16 @@ def main():
         print("⏳ Сборка идет. Проверь позже: gh run list")
 
 if __name__ == "__main__":
-    main()
-
+    while True:
+        try:
+            print("\n" + "="*40)
+            main()  # Запускаем одну итерацию (ввод задачи, генерация, пуш)
+            print("="*40)
+            print("✅ Готово! Введи новую задачу или нажми Ctrl+C для выхода.")
+        except KeyboardInterrupt:
+            print("\n👋 Выход из режима ИИ. До встречи!")
+            break
+        except Exception as e:
+            print(f"\n❌ Произошла ошибка: {e}")
+            print("🔄 Перезапуск цикла...")
+            time.sleep(2)
